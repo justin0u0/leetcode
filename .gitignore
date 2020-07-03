@@ -2,3 +2,6 @@
 # compiled executable file
 test
 
+# Debug file
+debug.cpp
+
