@@ -15,45 +15,26 @@
  */
 class Solution {
 private:
-  ListNode* head = nullptr;
-  ListNode* tail = nullptr;
-  void insertBack(int value) {
-    if (head == nullptr) {
-      head = new ListNode(value);
-      tail = head;
+  ListNode* inplaceMerge(ListNode* lhs, ListNode* rhs) {
+    if (!lhs) return rhs;
+    if (!rhs) return lhs;
+
+    if (lhs->val < rhs->val) {
+      lhs->next = inplaceMerge(lhs->next, rhs);
+      return lhs;
     } else {
-      ListNode* newNode = new ListNode(value);
-      tail->next = newNode;
-      tail = tail->next;
+      rhs->next = inplaceMerge(lhs, rhs->next);
+      return rhs;
     }
-  }
-  ListNode* merge2Lists(ListNode* lhs, ListNode* rhs) {
-    head = nullptr;
-    tail = nullptr;
-    while (lhs != nullptr || rhs != nullptr) {
-      if (rhs == nullptr || (lhs != nullptr && lhs->val < rhs->val)) {
-        insertBack(lhs->val);
-        lhs = lhs->next;
-      } else {
-        insertBack(rhs->val);
-        rhs = rhs->next;
-      }
-    }
-    return head;
   }
 public:
   ListNode* mergeKLists(vector<ListNode*>& lists) {
     if (lists.empty()) return nullptr;
-    while ((int)lists.size() > 1) {
-      vector<ListNode*> newLists;
-      for (int i = 0; i < (int)lists.size() - 1; i += 2) {
-        ListNode* mergedList = merge2Lists(lists[i], lists[i + 1]);
-        newLists.emplace_back(mergedList);
+    int listsLength = (int)lists.size();
+    for (int i = 1; i < listsLength; i <<= 1) {
+      for (int j = 0; j + i < listsLength; j += i * 2) {
+        lists[j] = inplaceMerge(lists[j], lists[j + i]);
       }
-      if ((int)lists.size() & 1) {
-        newLists.emplace_back(lists.back());
-      }
-      lists = newLists;
     }
     return lists[0];
   }
