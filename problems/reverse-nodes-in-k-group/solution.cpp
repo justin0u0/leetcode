@@ -16,10 +16,10 @@
 class Solution {
 private:
   ListNode* reverseSingleGroup(ListNode* head, ListNode* lastNode, int k) {
-    if (k == 0) return lastNode;
-    ListNode* newHead = reverseSingleGroup(head->next, head, k - 1);
+    ListNode* nextNode = head->next;
     head->next = lastNode;
-    return newHead;
+    if (k == 1) return head;
+    return reverseSingleGroup(nextNode, head, k - 1);
   }
 public:
   ListNode* reverseKGroup(ListNode* head, int k) {
@@ -28,8 +28,7 @@ public:
       node = node->next;
     if (node == nullptr)
       return head;
-    ListNode* newHead = reverseKGroup(node->next, k);
-    return reverseSingleGroup(head, newHead, k);
+    return reverseSingleGroup(head, reverseKGroup(node->next, k), k);
   }
 };
 
