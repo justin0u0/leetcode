@@ -1,6 +1,7 @@
 /**
  * Author: justin0u0<mail@justin0u0.com>
  * Problem: https://leetcode.com/problems/freedom-trail/
+ * Runtime: 116ms
  */
 
 class Solution {
@@ -8,28 +9,26 @@ private:
   const int INF = 0x3f3f3f3f;
 public:
   int findRotateSteps(string ring, string key) {
-    const int ringLength = (int)ring.length();
-    const int keyLength = (int)key.length();
-    vector<vector<int>> dp(keyLength + 1, vector<int>(ringLength, INF));
+    const int rl = (int)ring.length();
+    const int kl = (int)key.length();
+    vector<vector<int>> dp(kl + 1, vector<int>(rl, INF));
     dp[0][0] = 0;
 
-    for (int i = 1; i <= keyLength; i++) {
-      char target = key[i - 1];
-      for (int j = 0; j < ringLength; j++) {
-        if (target == ring[j]) {
-          for (int k = 0; k < ringLength; k++) {
+    for (int i = 1; i <= kl; i++) {
+      for (int j = 0; j < rl; j++) {
+        if (key[i - 1] == ring[j]) {
+          for (int k = 0; k < rl; k++) {
             // From k -> j
-            int clockwise = (k - j + ringLength) % ringLength;
-            int anticlockwise = (j - k + ringLength) % ringLength;
-            dp[i][j] = min(dp[i][j], dp[i - 1][k] + min(clockwise, anticlockwise) + 1);
+            int dist = abs(k - j);
+            dp[i][j] = min(dp[i][j], dp[i - 1][k] + min(dist, rl - dist) + 1);
           }
         }
       }
     }
 
     int steps = INF;
-    for (int i = 0; i < ringLength; i++) {
-      steps = min(steps, dp[keyLength][i]);
+    for (int i = 0; i < rl; i++) {
+      steps = min(steps, dp[kl][i]);
     }
     return steps;
   }

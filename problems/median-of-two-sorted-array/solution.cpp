@@ -1,6 +1,7 @@
 /**
  * Author: justin0u0<mail@justin0u0.com>
  * Problem: https://leetcode.com/problems/median-of-two-sorted-arrays/
+ * Runtime: 44ms
  */
 
 class Solution {

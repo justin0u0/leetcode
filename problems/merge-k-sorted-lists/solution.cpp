@@ -1,6 +1,7 @@
 /**
  * Author: justin0u0<mail@justin0u0.com>
  * Problem: https://leetcode.com/problems/merge-k-sorted-lists/
+ * Runtime: 28ms
  */
 
 /**

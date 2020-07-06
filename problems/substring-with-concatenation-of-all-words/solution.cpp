@@ -2,7 +2,6 @@
  * Author: justin0u0<mail@justin0u0.com>
  * Problem: https://leetcode.com/problems/substring-with-concatenation-of-all-words/
  * Runtime: 52ms
- * Memory Usage: 17.4MB
  */
 
 class Solution {
