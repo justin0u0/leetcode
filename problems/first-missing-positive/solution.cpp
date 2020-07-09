@@ -1,6 +1,7 @@
 /**
  * Author: justin0u0<mail@justin0u0.com>
  * Problem: https://leetcode.com/problems/first-missing-positive/
+ * Runtime: 4ms
  */
 
 class Solution {
