@@ -1,6 +1,6 @@
 /**
  * Author: justin0u0<mail@justin0u0.com>
- * Problem: https://leetcode.com/problems/n-queens/
+ * Problem: https://leetcode.com/problems/n-queens-ii/
  * Runtime: 8ms
  */
 
