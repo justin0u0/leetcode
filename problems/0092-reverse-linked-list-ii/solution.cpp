@@ -1,6 +1,6 @@
 /**
  * Author: justin0u0<mail@justin0u0.com>
- * Problem: https://leetcode.com/problems/reverse-linked-list-ii/submissions/
+ * Problem: https://leetcode.com/problems/reverse-linked-list-ii/
  * Runtime: 0ms
  */
 
