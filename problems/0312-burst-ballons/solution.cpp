@@ -2,25 +2,24 @@
  * Author: justin0u0<mail@justin0u0.com>
  * Problem: https://leetcode.com/problems/burst-balloons/
  * Runtime: 372ms
+ * Time Complexity: O(N^3)
  */
 
 class Solution {
 public:
   int maxCoins(vector<int>& nums) {
+    nums.insert(nums.begin(), 1);
+    nums.emplace_back(1);
     int n = nums.size();
+    
     int **dp = new int*[n];
-    for (int i = 0; i < n; i++) {
-      dp[i] = new int[n]();
-    }
+    for (int i = n - 1; i >= 0; i--) {
+      dp[i] = new int[n + 1];
+      dp[i][i + 1] = 0;
 
-    dp[n - 1][n - 1] = nums[n - 1];
-    for (int i = n - 2; i >= 0; i--) {
-      dp[i][i] = nums[i];
-      dp[i][i + 1] = nums[i] * nums[i + 1];
       for (int j = i + 2; j < n; j++) {
-        for (int k = i + 1; k < j; k++) {
-          dp[i][j] = max(dp[i][j], dp[i][k - 1] + dp[k + 1][j] + nums[k - 1] * nums[k] * nums[k + 1]);
-        }
+        for (int k = i + 1; k < j; k++)
+          dp[i][j] = max(dp[i][j], dp[i][k] + dp[k][j] + nums[i] * nums[k] * nums[j]);
       }
     }
     return dp[0][n - 1];
