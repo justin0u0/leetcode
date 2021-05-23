@@ -2,6 +2,8 @@
  * Author: justin0u0<mail@justin0u0.com>
  * Problem: https://leetcode.com/problems/guess-number-higher-or-lower-ii/
  * Runtime: 40ms
+ * Time Complexity: O(N^2)
+ * Description: Bottom-up DP
  */
 
 class Solution {
