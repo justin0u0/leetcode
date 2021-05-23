@@ -2,6 +2,7 @@
  * Author: justin0u0<mail@justin0u0.com>
  * Problem: https://leetcode.com/problems/palindrome-partitioning-ii/
  * Runtime: 52ms
+ * Time Complexity: O(N^2)
  * Description (reverse version):
  *  First calculate isPalindrome for all substring,
  *  then use dp(i) represent the min-cut for substring s[i:n-1],

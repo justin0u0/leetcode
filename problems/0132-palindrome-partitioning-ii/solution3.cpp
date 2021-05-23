@@ -2,7 +2,8 @@
  * Author: justin0u0<mail@justin0u0.com>
  * Problem: https://leetcode.com/problems/palindrome-partitioning-ii/
  * Runtime: 60ms
- * Description: One-way O(N) solution
+ * Time Complexity: O(N^2)
+ * Description: One-way O(N^2) solution
  */
 
 class Solution {
