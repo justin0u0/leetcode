@@ -11,16 +11,16 @@ private:
   int** dp;
   int minCost(int i, int j) {
     if (i > j)
-      return 0;
+      return 0x3f3f3f3f;
     if (i == j)
-      return i + 1;
+      return 0;
 
     if (dp[i][j] != -1)
       return dp[i][j];
 
-    dp[i][j] = min(minCost(i + 1, j), minCost(i, j - 1));
+    dp[i][j] = min((i + 1) + minCost(i + 1, j), minCost(i, j - 1) + (j + 1));
     for (int k = i + 1; k < j; k++) {
-      dp[i][j] = min(minCost(i, k - 1) + minCost(k + 1, j));
+      dp[i][j] = min(dp[i][j], max(minCost(i, k - 1), minCost(k + 1, j)) + k + 1);
     }
     return dp[i][j];
   }
