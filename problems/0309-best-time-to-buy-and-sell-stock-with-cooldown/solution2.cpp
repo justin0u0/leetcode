@@ -15,8 +15,8 @@
  *    => from above 2 observes, maintain `maxDp` for max{dp(j)}, so maxDp=max(maxDp, dp[i-3]);
  *        also, maintain `best` for max{dp(j)}-prices[k'], so best=max(best, maxDp - prices[i-1])
  *    => so, dp(i)=prices[i]+best
- *  Time Complexity: O(N)
- *  Space Complexity: O(1)
+ * Time Complexity: O(N)
+ * Space Complexity: O(1)
  */
 
 class Solution {
