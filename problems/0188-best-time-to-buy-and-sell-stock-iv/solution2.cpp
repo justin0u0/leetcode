@@ -1,23 +1,20 @@
 /**
  * Author: justin0u0<mail@justin0u0.com>
  * Problem: https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/
- * Rumtime: 12ms
+ * Rumtime: 8ms
  * Time Complexity: O(NK)
- * Space Complexity: O(NK)
+ * Space Complexity: O(K)
  */
 
 class Solution {
 public:
   int maxProfit(int k, vector<int>& prices) {
     int n = prices.size();
-    if (!n) return 0;
     const int inf = 0x3f3f3f3f;
-    vector<int> buy(k + 1);
-    vector<int> sell(k + 1);
+    vector<int> buy(k + 1, -inf);
+    vector<int> sell(k + 1, -inf);
 
-    buy[0] = -prices[0];
-    sell[0] = 0;
-    for (int i = 1; i < n; i++) {
+    for (int i = 0; i < n; i++) {
       buy[0] = max(buy[0], -prices[i]);
       sell[0] = 0;
 
